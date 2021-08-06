@@ -1,9 +1,9 @@
 name: CI
 on:
   pull_request:
-    branches: [develop]
+    branches: [develop, main]
   push:
-    branches: [develop]
+    branches: [develop, main]
 
 jobs:
   build:
@@ -23,7 +23,6 @@ jobs:
           node-version: "12.x"
       - run: npm ci
       - run: npm run format:check
-        #if: failure()
       - run: npm test -- --coverage
         env:
           CI: true
@@ -41,6 +40,11 @@ jobs:
         with:
           name: build
           path: build
+      - name: Create semantic-release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secret.GITHUB_TOKEN}}
       - name: Deploy to staging
         if: github.event_name == 'push'
         run: npx surge --project ./build --domain wanting-cub.surge.sh
