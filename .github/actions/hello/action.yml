@@ -1,0 +1,14 @@
+name: Hello World
+author: Richard Holmlund
+descriptions: Some descriptions
+inputs:
+  who-to-greet:
+  descriptions: "Who to greet"
+  required: true
+  default: Richard
+outputs:
+  time:
+    description: "The greetings time"
+runs:
+  using: "node12"
+  main: "index.js"
