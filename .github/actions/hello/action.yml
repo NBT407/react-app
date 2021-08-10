@@ -1,14 +1,14 @@
 name: Hello World
 author: Richard Holmlund
-descriptions: Some descriptions
+description: Some description
 inputs:
   who-to-greet:
-  descriptions: "Who to greet"
-  required: true
-  default: Richard
+    description: "Who to greet"
+    required: true
+    default: Richard
 outputs:
   time:
-    description: "The greetings time"
+    description: "The greeting time"
 runs:
   using: "node12"
-  main: "index.js"
+  main: "dist/index.js"
