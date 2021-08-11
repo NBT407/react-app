@@ -7,12 +7,12 @@ jobs:
       - uses: ./.github/actions/issue
         id: issue
         with:
-          token: ${{ secrets.GITHUB_TOKEN}}
-          title: title
-          body: body
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: Title
+          body: Body
           assignees: |
+            nbt407
             Richard
-            Holmlund
       - run: |
           echo ${{ steps.issue.outputs.issue }}
       - uses: ./.github/actions/hello
